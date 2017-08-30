@@ -24,4 +24,3 @@ Cubs | National
 Red Sox | American
 
 <img src="2017-lamborghini-aventador_100580862_m.jpg" width="300"/>
-//![](2017-lamborghini-aventador_100580862_m.jpg)
