@@ -2,6 +2,16 @@
 title: "dplyr"
 output: html_document
 ---
+### *Jerrin Joe Varghese*
+##### Age : 26
+
+
+####  **About Me** :
+##### I am a data Science student at mercyhurst.Worked at Einfochips for 3 years as
+##### a device driver engineer for Texas instruments.
+
+ <img src="IMG-20170130-WA0012.jpg" width="300"/>
+ 
 
 ## Filtering Columns and Rows
 
