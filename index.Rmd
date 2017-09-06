@@ -31,3 +31,56 @@ Batting%>%
   filter(teamID=='NYA' & yearID==1927)
 ```
 
+Please find some examples 
+
+Example 1.  # more than 50 Home Runs and arrange
+Solution :
+
+```{r}
+
+        Batting%>%
+          select(playerID,yearID,teamID,HR)%>%
+          filter(HR>50)%>%
+          arrange(HR) # assending order by default.
+```
+
+Example 2.  More than 50 Home Runs and arrange
+Solution :
+
+```{r}
+  Batting%>%
+          select(playerID,yearID,teamID,HR)%>%
+          filter(HR>50)%>%
+          #arrange(HR) # assending order
+          arrange(desc(HR))     #desscending order 
+```
+
+Example 3 : Less than 10 times strike-out and have atleast 400 at-bats (AB),also the
+            players with small strike outs (SO) at top and more than 50 Home Runs.
+Solution : 
+
+```{r}
+  Batting%>%
+          select(playerID,yearID,teamID,AB,SO)%>%
+          filter(SO<10 & AB>=400)%>%
+          arrange(SO)
+```
+
+Example 4 :  Find players from philies with greater than 30 HomeRuns and from year 1970 to 1979.
+Solution : 
+
+```{r}
+Batting%>%
+  select(playerID,teamID,yearID,HR)%>%
+  filter(teamID=='PHI' & HR>30,yearID<='1979' & yearID >='1970')
+```
+
+Example 5 : Find Players with less than 60 Strike-outs and atleast more than 40 home runs
+Solution :
+
+```{r}
+Batting%>%
+  select(playerID,teamID,yearID,HR,SO)%>%
+  filter( SO<60 & HR>=40)
+```
+

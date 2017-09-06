@@ -171,6 +171,214 @@ library(dplyr)</code></pre>
 ## 23 shockur01   1927    NYA  0
 ## 24 thomamy01   1927    NYA  0
 ## 25  weraju01   1927    NYA  1</code></pre>
+<p>Please find some examples</p>
+<p>Example 1. # more than 50 Home Runs and arrange Solution :</p>
+<pre class="r"><code>        Batting%&gt;%
+          select(playerID,yearID,teamID,HR)%&gt;%
+          filter(HR&gt;50)%&gt;%
+          arrange(HR) # assending order by default.</code></pre>
+<pre><code>##     playerID yearID teamID HR
+## 1  kinerra01   1947    PIT 51
+## 2   mizejo01   1947    NY1 51
+## 3   mayswi01   1955    NY1 51
+## 4  fieldce01   1990    DET 51
+## 5  jonesan01   2005    ATL 51
+## 6  mantlmi01   1956    NYA 52
+## 7   mayswi01   1965    SFN 52
+## 8  fostege01   1977    CIN 52
+## 9  mcgwima01   1996    OAK 52
+## 10 rodrial01   2001    TEX 52
+## 11 thomeji01   2002    CLE 52
+## 12 davisch02   2013    BAL 53
+## 13  ruthba01   1920    NYA 54
+## 14  ruthba01   1928    NYA 54
+## 15 kinerra01   1949    PIT 54
+## 16 mantlmi01   1961    NYA 54
+## 17 ortizda01   2006    BOS 54
+## 18 rodrial01   2007    NYA 54
+## 19 bautijo02   2010    TOR 54
+## 20 wilsoha01   1930    CHN 56
+## 21 griffke02   1997    SEA 56
+## 22 griffke02   1998    SEA 56
+## 23 gonzalu01   2001    ARI 57
+## 24 rodrial01   2002    TEX 57
+## 25  foxxji01   1932    PHA 58
+## 26 greenha01   1938    DET 58
+## 27 howarry01   2006    PHI 58
+## 28  ruthba01   1921    NYA 59
+## 29  ruthba01   1927    NYA 60
+## 30 marisro01   1961    NYA 61
+## 31  sosasa01   1999    CHN 63
+## 32  sosasa01   2001    CHN 64
+## 33 mcgwima01   1999    SLN 65
+## 34  sosasa01   1998    CHN 66
+## 35 mcgwima01   1998    SLN 70
+## 36 bondsba01   2001    SFN 73</code></pre>
+<p>Example 2. More than 50 Home Runs and arrange Solution :</p>
+<pre class="r"><code>  Batting%&gt;%
+          select(playerID,yearID,teamID,HR)%&gt;%
+          filter(HR&gt;50)%&gt;%
+          #arrange(HR) # assending order
+          arrange(desc(HR))     #desscending order </code></pre>
+<pre><code>##     playerID yearID teamID HR
+## 1  bondsba01   2001    SFN 73
+## 2  mcgwima01   1998    SLN 70
+## 3   sosasa01   1998    CHN 66
+## 4  mcgwima01   1999    SLN 65
+## 5   sosasa01   2001    CHN 64
+## 6   sosasa01   1999    CHN 63
+## 7  marisro01   1961    NYA 61
+## 8   ruthba01   1927    NYA 60
+## 9   ruthba01   1921    NYA 59
+## 10  foxxji01   1932    PHA 58
+## 11 greenha01   1938    DET 58
+## 12 howarry01   2006    PHI 58
+## 13 gonzalu01   2001    ARI 57
+## 14 rodrial01   2002    TEX 57
+## 15 wilsoha01   1930    CHN 56
+## 16 griffke02   1997    SEA 56
+## 17 griffke02   1998    SEA 56
+## 18  ruthba01   1920    NYA 54
+## 19  ruthba01   1928    NYA 54
+## 20 kinerra01   1949    PIT 54
+## 21 mantlmi01   1961    NYA 54
+## 22 ortizda01   2006    BOS 54
+## 23 rodrial01   2007    NYA 54
+## 24 bautijo02   2010    TOR 54
+## 25 davisch02   2013    BAL 53
+## 26 mantlmi01   1956    NYA 52
+## 27  mayswi01   1965    SFN 52
+## 28 fostege01   1977    CIN 52
+## 29 mcgwima01   1996    OAK 52
+## 30 rodrial01   2001    TEX 52
+## 31 thomeji01   2002    CLE 52
+## 32 kinerra01   1947    PIT 51
+## 33  mizejo01   1947    NY1 51
+## 34  mayswi01   1955    NY1 51
+## 35 fieldce01   1990    DET 51
+## 36 jonesan01   2005    ATL 51</code></pre>
+<p>Example 3 : Less than 10 times strike-out and have atleast 400 at-bats (AB),also the players with small strike outs (SO) at top and more than 50 Home Runs. Solution :</p>
+<pre class="r"><code>  Batting%&gt;%
+          select(playerID,yearID,teamID,AB,SO)%&gt;%
+          filter(SO&lt;10 &amp; AB&gt;=400)%&gt;%
+          arrange(SO)</code></pre>
+<pre><code>##     playerID yearID teamID  AB SO
+## 1  doyleja01   1894    NY1 422  3
+## 2  seweljo01   1932    NYA 503  3
+## 3  seweljo01   1925    CLE 608  4
+## 4  seweljo01   1929    CLE 578  4
+## 5  seweljo01   1933    NYA 524  4
+## 6   wardjo01   1893    NY1 588  5
+## 7  holloch01   1922    CHN 592  5
+## 8  mcinnst01   1922    CLE 537  5
+## 9  wanerll01   1936    PIT 414  5
+## 10 wrighge01   1875    BS1 408  6
+## 11 broutda01   1889    BSN 485  6
+## 12 keelewi01   1894    BLN 590  6
+## 13  wardjo01   1894    NY1 540  6
+## 14 quinnjo02   1895    SLN 543  6
+## 15 mcinnst01   1924    BSN 581  6
+## 16 seweljo01   1926    CLE 578  6
+## 17  wardjo01   1889    NY1 479  7
+## 18 crossla01   1893    PHI 415  7
+## 19 quinnjo02   1893    SLN 547  7
+## 20 crossla01   1894    PHI 529  7
+## 21 vaughfa01   1896    CIN 433  7
+## 22 cochrmi01   1927    PHA 432  7
+## 23 seweljo01   1927    CLE 569  7
+## 24 traynpi01   1929    PIT 540  7
+## 25 muelldo01   1956    NY1 453  7
+## 26 connoro01   1885    NY1 455  8
+## 27 glassja01   1887    IN3 483  8
+## 28 glassja01   1890    NY1 512  8
+## 29 donovpa01   1893    PIT 499  8
+## 30 dungasa01   1893    CHN 465  8
+## 31 pinknge01   1893    LS3 446  8
+## 32 brodist01   1894    BLN 573  8
+## 33 quinnjo02   1894    SLN 405  8
+## 34 bierblo01   1895    PIT 466  8
+## 35 crossla01   1895    PHI 535  8
+## 36   hoydu01   1895    CIN 429  8
+## 37 roushed01   1921    CIN 418  8
+## 38 collied01   1923    CHA 505  8
+## 39 collied01   1925    CHA 425  8
+## 40 speaktr01   1927    WS1 523  8
+## 41 cochrmi01   1929    PHA 514  8
+## 42 seweljo01   1931    NYA 484  8
+## 43 wanerll01   1933    PIT 500  8
+## 44 verbaem01   1947    PHI 540  8
+## 45 ansonca01   1883    CHN 413  9
+## 46 broutda01   1887    DTN 500  9
+## 47   hoydu01   1893    WAS 564  9
+## 48 bierblo01   1894    PIT 525  9
+## 49 broutda01   1894    BLN 525  9
+## 50 milledo01   1894    SLN 481  9
+## 51 keelewi01   1896    BLN 544  9
+## 52 mckeaed01   1896    CL4 571  9
+## 53 speaktr01   1918    CLE 471  9
+## 54  dealch01   1921    CHN 422  9
+## 55 mcinnst01   1921    BOS 584  9
+## 56 severha01   1921    SLA 472  9
+## 57  highan01   1926    BSN 476  9
+## 58 summaho01   1926    CLE 581  9
+## 59 seweljo01   1928    CLE 588  9
+## 60  ricesa01   1929    WS1 616  9
+## 61 leachfr01   1931    NY1 515  9
+## 62 busched01   1945    PHA 416  9
+## 63 holmeto01   1945    BSN 636  9
+## 64 boudrlo01   1948    CLE 560  9
+## 65 mitchda01   1952    CLE 511  9</code></pre>
+<p>Example 4 : Find players from philies with greater than 30 HomeRuns and from year 1970 to 1979. Solution :</p>
+<pre class="r"><code>Batting%&gt;%
+  select(playerID,teamID,yearID,HR)%&gt;%
+  filter(teamID=='PHI' &amp; HR&gt;30,yearID&lt;='1979' &amp; yearID &gt;='1970')</code></pre>
+<pre><code>##    playerID teamID yearID HR
+## 1 johnsde01    PHI   1971 34
+## 2 schmimi01    PHI   1974 36
+## 3 luzingr01    PHI   1975 34
+## 4 schmimi01    PHI   1975 38
+## 5 schmimi01    PHI   1976 38
+## 6 luzingr01    PHI   1977 39
+## 7 schmimi01    PHI   1977 38
+## 8 luzingr01    PHI   1978 35
+## 9 schmimi01    PHI   1979 45</code></pre>
+<p>Example 5 : Find Players with less than 60 Strike-outs and atleast more than 40 home runs Solution :</p>
+<pre class="r"><code>Batting%&gt;%
+  select(playerID,teamID,yearID,HR,SO)%&gt;%
+  filter( SO&lt;60 &amp; HR&gt;=40)</code></pre>
+<pre><code>##     playerID teamID yearID HR SO
+## 1  hornsro01    SLN   1922 42 50
+## 2  willicy01    PHI   1923 41 57
+## 3    ottme01    NY1   1929 42 38
+## 4  kleinch01    PHI   1930 40 50
+## 5  gehrilo01    NYA   1931 46 56
+## 6   ruthba01    NYA   1931 46 51
+## 7  gehrilo01    NYA   1934 49 31
+## 8  gehrilo01    NYA   1936 49 46
+## 9  troskha01    CLE   1936 42 58
+## 10 dimagjo01    NYA   1937 46 37
+## 11  mizejo01    SLN   1940 43 49
+## 12  mizejo01    NY1   1947 51 42
+## 13  mizejo01    NY1   1948 40 37
+## 14 willite01    BOS   1949 43 48
+## 15 kinerra01    PIT   1951 42 57
+## 16 camparo01    BRO   1953 41 58
+## 17 kluszte01    CIN   1953 40 34
+## 18 rosenal01    CLE   1953 43 48
+## 19 kluszte01    CIN   1954 49 35
+## 20  mayswi01    NY1   1954 41 57
+## 21 kluszte01    CIN   1955 47 40
+## 22 aaronha01    ML1   1957 44 58
+## 23 sievero01    WS1   1957 42 55
+## 24 aaronha01    ATL   1969 44 47
+## 25 aaronha01    ATL   1971 47 58
+## 26 aaronha01    ATL   1973 40 51
+## 27 thomafr04    CHA   1993 41 54
+## 28 bondsba01    SFN   2002 46 47
+## 29 bondsba01    SFN   2003 45 58
+## 30 bondsba01    SFN   2004 45 41
+## 31 pujolal01    SLN   2004 46 52
+## 32 pujolal01    SLN   2006 49 50</code></pre>
 </div>
 
 
