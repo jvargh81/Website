@@ -2,28 +2,40 @@
 title: "dplyr"
 output: html_document
 ---
-### *Jerrin Joe Varghese*
+#### *Jerrin Joe Varghese*
 ##### Age : 26
 
 
-####  **About Me** :
+
+#### **About Me** :
 ##### I am a data Science student at mercyhurst.Worked at Einfochips for 3 years as
 ##### a device driver engineer for Texas instruments.
 
  <img src="IMG-20170130-WA0012.jpg" width="300"/>
  
+### Introduction 
+_dplyr is a new package which provides a set of tools to efficiently manipulate datasets in R. dplyr is the next iteration of plyr, focussing on only data frames. dplyr is faster and has a more consistent API and is easier to use._
 
-## Filtering Columns and Rows
+######## With the help of these shown libraries, we will analyze and understand some of 
+######## the features of dplyr.
 
-When using dplyr, you can filter columns and rows by using select and filter.
-Let's look at an example using Lahman data base.
-We first have to load the Lahman and dplyr packages.
+ <span style="color:red">**Note : Lahman is a baseball dataset. It contains information of baseball players.**</span>
+ 
+
 ```{r message=FALSE, warning=FALSE}
 library(Lahman)
 library(dplyr)
 ```
 
-Now, Suppose we would like to see the homerun totals for the 1927 New York Yankees, We could run the following Code :
+** Lets go through some of the features with example**
+
+#### Filtering Columns and Rows
+
+_When using dplyr, you can filter columns and rows by using select and filter.
+Let's look at an example using Lahman data base.
+We first have to load the Lahman and dplyr packages._
+
+_Now, Suppose we would like to see the homerun totals for the 1927 New York Yankees, We could run the following Code :_
 
 ```{r}
 Batting%>%
@@ -85,9 +97,12 @@ Batting%>%
 ```
 
 
-#### Aggrigation 
 
-##### Here are few examples on Aggregation.
+#### Grouping and Aggrigation 
+
+_When you aggregate data, you replace groups of observations with summary statistics based on those observations. When you reshape data, you alter the structure (rows and columns) determining how the data is organized._
+
+**Here are few examples on Aggregation.**
 
 Example 1 : 
 ```{r}
@@ -139,3 +154,7 @@ Batting%>%
 ```
 
 
+### Reference 
+https://blog.rstudio.com/2014/01/17/introducing-dplyr/
+
+https://www.r-statistics.com/2012/01/aggregation-and-restructuring-data-from-r-in-action/
