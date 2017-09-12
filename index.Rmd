@@ -15,7 +15,7 @@ output: html_document
 
 ## Filtering Columns and Rows
 
-When using dplyr, yu can filter columns and rows by using select and filter.
+When using dplyr, you can filter columns and rows by using select and filter.
 Let's look at an example using Lahman data base.
 We first have to load the Lahman and dplyr packages.
 ```{r message=FALSE, warning=FALSE}
@@ -83,4 +83,59 @@ Batting%>%
   select(playerID,teamID,yearID,HR,SO)%>%
   filter( SO<60 & HR>=40)
 ```
+
+
+#### Aggrigation 
+
+##### Here are few examples on Aggregation.
+
+Example 1 : 
+```{r}
+Batting%>%
+  select(playerID,HR)%>%
+  filter(playerID=='ruthba01')
+```
+
+Example 2 : 
+```{r}
+Batting%>%
+  filter(playerID == 'ruthba01')%>%
+  group_by(playerID)%>%
+  summarise(career_HR = sum(HR))
+```
+
+Example 3 : 
+Find the career homerun totals for all players, but limit the list to those
+who have a creer total of 600 or more.Put highest totals at the top.
+```{r}
+Batting%>%
+  group_by(playerID)%>%
+  summarise(career_HR=sum(HR))%>%
+  filter(career_HR>=600)%>%
+  arrange(desc(career_HR))
+```
+
+
+Example 4 : 
+What players have the highest average per season hr tottals
+```{r}
+Batting%>%
+  group_by(playerID)%>%
+  summarise(HR_avg=mean(HR))%>%
+  filter(HR_avg > 30)%>%
+  arrange(desc(HR_avg))
+
+```
+
+Example 5 : 
+what players since 1970 has hit more than 50 HR at least once
+```{r}
+Batting%>%
+  filter(yearID>=1970)%>%
+  group_by(playerID)%>%
+  summarise(maxHR = max(HR))%>%
+  filter(maxHR>50)%>%
+  select(playerID)
+```
+
 
